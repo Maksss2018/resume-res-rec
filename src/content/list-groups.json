@@ -1,0 +1,118 @@
+{
+    "data": "true",
+    "lists": [{
+            "listType": "contacts",
+            "list": [{ "icon": "ios-call-outline", "text": "+380955704721", "link": "callto:+380955704721" }, { "icon": "ios-at-outline", "text": "malyimaksym37@gmail.com", "link": "mailto:malyimaksym37@gmail.com" }, { "icon": "ios-planet", "text": "Ukrain Odesa City", "link": "https://goo.gl/maps/6qUsg6UM2t52" }]
+        },
+        {
+            "listType": "my-info",
+            "list": [{ "icon": "logo-github", "text": " Me on github ", "link": "https://github.com/Maksss2018" },
+                { "icon": "logo-google", "text": "Application", "link": "https://drive.google.com/open?id=11INaFaNawIw2Db4SYc8xxCdhXBM3Ghsq" }
+            ]
+        },
+        {
+            "listType": "interests",
+            "list": [{ "icon": "ios-code-working", "text": "Coding", "link": "https://github.com/Maksss2018" },
+                { "icon": "ios-bulb", "text": "DIY", "link": "https://github.com/Maksss2018" },
+                { "icon": "ios-pulse", "text": "Chi-gun", "link": "https://github.com/Maksss2018" },
+                { "icon": "ios-nuclear", "text": "Fallout", "link": "https://github.com/Maksss2018" },
+                { "icon": "ios-ionitron", "text": "Girls", "link": "https://github.com/Maksss2018" },
+                { "icon": "ios-flask", "text": "science-fiction", "link": "https://github.com/Maksss2018" },
+                { "icon": "ios-color-palette-outline", "text": "Art", "link": "https://github.com/Maksss2018" }
+            ]
+        },
+        {
+            "listType": "references",
+            "list": [{ "timeOnPosition": "2016 february-july", "linkText": "Hennadii Yevsevskyi", "link": "https://www.facebook.com/PrimeTorqueMotors/?ref=profile_intro_card", "PositionText": "Site admin" },
+                { "timeOnPosition": "2016 july-december", "linkText": "Heiner Schriever", "link": "mailto:info@hyperstardev.com", "PositionText": "technicall support" }
+            ]
+        },
+        {
+            "listType": "experience",
+            "list": [{
+                    "timeOnPosition": "2016 february-july",
+                    "linkText": "Prime Torque Motors",
+                    "link": "https://www.facebook.com/PrimeTorqueMotors/?ref=profile_intro_card",
+                    "PositionText": "Site admin",
+                    "shortAboutPosition": " This post gave me time to deepin my knowledges in PHP and PHPBB. And I had a time to start learning Node.js  when I was  free from work duties."
+                },
+                {
+                    "timeOnPosition": "2016 july-december",
+                    "linkText": "HS-soft",
+                    "link": "https://www.hssoft.com",
+                    "PositionText": "technicall support",
+                    "shortAboutPosition": "For some time working as member of support team, thanks to Heiner owner of 'HSsoft' I get new knowledgis in AWS (Amazone web technologis) - that was realy interesting for me how actualy was interested in front-end developer position. On this position I learned how use AWS RDS, littel bit about lamda,AWS Getaway,AWS ES2, AWS AMI."
+                },
+                {
+                    "timeOnPosition": "2017 december-present",
+                    "linkText": "Freelancer",
+                    "link": "#",
+                    "PositionText": "WEB-developer",
+                    "shortAboutPosition": "Corrently I`m work for oneself : fixing bugs in someones code."
+                }
+            ]
+        },
+        {
+            "listType": "education",
+            "list": [{
+                    "timeOnPosition": "1994-2005",
+                    "linkText": " School with in-depth study of English",
+                    "link": "https://goo.gl/maps/16ZBXTn5Lyt",
+                    "PositionText": "Ukrain, Odessa city, School 86",
+                    "shortAboutPosition": " One of the best schools in our city with a keen study of English. Many thanks to my teachers who taught and educated me."
+                },
+                {
+                    "timeOnPosition": "2005-2010",
+                    "linkText": "Odessa National University - I.I. Mechnikov",
+                    "link": "http://onu.edu.ua/en/",
+                    "PositionText": "Ukrain, Odessa city",
+                    "shortAboutPosition": "I`m studied in the course of jurisprudence. After a successful defense of the graduate work, I received a scientific degree in criminal law - now equated with a master's degree."
+                },
+                {
+                    "timeOnPosition": "2016",
+                    "linkText": "IT school 'Step' ",
+                    "link": "https://od.itstep.org/",
+                    "PositionText": "Ukrain, Odessa city",
+                    "shortAboutPosition": "I went through a course in the field of web development. But I still choose a successful topic for the graduate work. Which could fully show my skills and abilities."
+                },
+                {
+                    "timeOnPosition": "2017-present",
+                    "linkText": "Self-education",
+                    "link": "#",
+                    "PositionText": "Almighty, all knowledgeable Google",
+                    "shortAboutPosition": "I constantly deepen and expand my knowledge in programming, web development. Most of the free money go specifically to self-education - it is my hobby."
+                }
+
+            ]
+        },
+        {
+            "listType": "skills",
+            "list": [{
+                    "name": "JavaScript",
+                    "icon": "logo-nodejs",
+                    "barsValue": [{ "name": "Node", "value": 25 }, { "name": "Native", "value": 25 }, { "name": "Bootstrap", "value": 25 }, { "name": "React", "value": 25 }, { "name": "jQuery", "value": 25 }]
+                },
+                {
+                    "name": "PHP",
+                    "icon": "PHP",
+                    "barsValue": [{ "name": "Basic", "value": 25 }, { "name": "Wordpress", "value": 25 }, { "name": " Not mastered knowledge ", "value": 50 }]
+                },
+                {
+                    "name": "JAVA",
+                    "icon": "ios-cafe",
+                    "barsValue": [{ "name": "JAVA", "value": 15 }, { "name": " Not mastered knowledge ", "value": 75 }]
+                },
+                {
+                    "name": "HTML",
+                    "icon": "logo-html5",
+                    "barsValue": [{ "name": "HTML", "value": 25 }, { "name": "HTML5", "value": 25 }, { "name": "Bootstrap", "value": 25 }]
+                },
+                {
+                    "name": "CSS",
+                    "icon": "logo-css3",
+                    "barsValue": [{ "name": "CSS", "value": 25 }, { "name": "CSS3", "value": 25 }, { "name": "Bootstrap", "value": 25 }]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+<<<<<<< HEAD
+/.c9
+=======
+
+>>>>>>> c84fc66afa13d7f1e6e6ca7931c1c34773b9b350
+# testing
+/coverage
+
+# production
+/build
+/README.md
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+<<<<<<< HEAD
+/.c9
+=======
+
+>>>>>>> c84fc66afa13d7f1e6e6ca7931c1c34773b9b350
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
