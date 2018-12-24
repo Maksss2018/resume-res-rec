@@ -24,14 +24,26 @@ class UserModal extends React.Component {
         });
     }
     render() {
-        let button = this.props.type !== "skills" && this.props.type !== null ? <a href="#" className={this.props.animate} onClick={this.toggle}>{this.props.buttonLabel}</a> : <a href="#"  onMouseOver={this.handelIconchange.bind(this)} onMouseOut={this.handelIconchange.bind(this)} className={this.props.class} onClick={this.toggle}>{this.props.buttonLabel!=="PHP"?<Ionicon shake={this.state.animate} color={this.state.color} icon={this.props.buttonLabel} className="mr-2" fontSize="55px" />: <span className=" php">{this.props.name}</span>} </a>;
+        let  {modalText,type, animate,buttonLabel,modalTitle,name} = this.props,
+            button = type !== "skills" && type !== null ? <a href="#" className={animate} onClick={this.toggle}>{buttonLabel}</a> :
+            <a href="#"  onMouseOver={this.handelIconchange.bind(this)}
+               onMouseOut={this.handelIconchange.bind(this)}
+               className={`${this.props.class} mx-3 my-3 py-1 skills-modal-buttons `}
+               onClick={this.toggle}>
+                {buttonLabel!=="PHP"?<Ionicon
+                    shake={this.state.animate}
+                    color={this.state.color}
+                    icon={buttonLabel}
+                    className="mr-2"
+                    fontSize="55px" />
+                    : <span className=" php">{name}</span>} </a>;
         return (
             <span>
          {button}
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>{this.props.modalTitle}</ModalHeader>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} >
+          <ModalHeader toggle={this.toggle}>{modalTitle}</ModalHeader>
           <ModalBody>
-          {this.props.modalText}
+          {modalText}
           </ModalBody>
           <ModalFooter>
           </ModalFooter>

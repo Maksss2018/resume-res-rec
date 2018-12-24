@@ -77,15 +77,15 @@ class SkillsPieContainer extends Component {
     }
 
     render() {
-        let width = window.innerWidth ||
+        let {index,item} = this.props, width = window.innerWidth ||
             document.documentElement.clientWidth ||
             document.body.clientWidth;
 
-        return (<PieChart key={"pie"+this.props.index} width={400} height={300}>
+        return (<PieChart key={"pie"+index} width={400} height={300}>
                 <Pie
                     activeIndex={this.state.activeIndex}
                     activeShape={renderActiveShape}
-                    data={this.props.item}
+                    data={item}
                     cx={width <= 450 ? width <= 410 ? width <= 320 ? "30%" : "40%" : "36%" : "56%"}
                     cy={width <= 450 ? width <= 410 ? "40%" : "40%" : "50%"}
             innerRadius={20}

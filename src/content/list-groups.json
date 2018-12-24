@@ -7,7 +7,7 @@
         {
             "listType": "my-info",
             "list": [{ "icon": "logo-github", "text": " Me on github ", "link": "https://github.com/Maksss2018" },
-                { "icon": "logo-google", "text": "Application", "link": "https://drive.google.com/open?id=11INaFaNawIw2Db4SYc8xxCdhXBM3Ghsq" }
+                { "icon": "logo-google", "text": "Application", "link": "https://drive.google.com/open?id=1NWy6oSwo3neA5UfajaD_qGhuFpiMYm8pgw8J_Thz5zs" }
             ]
         },
         {
@@ -48,7 +48,7 @@
                     "linkText": "Freelancer",
                     "link": "#",
                     "PositionText": "WEB-developer",
-                    "shortAboutPosition": "Corrently I`m work for oneself : fixing bugs in someones code."
+                    "shortAboutPosition": "Corrently I`m work for myself : fixing bugs in someones code."
                 }
             ]
         },

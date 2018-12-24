@@ -145,8 +145,8 @@ class contacts extends Component {
          modalTitle={item.name}
          name={item.name}
          type={"skills"}
-         class={"mx-3 my-3 py-1 skills-modal-buttons"}
-         modalText={<SkillsPieContainer  item={item.barsValue} index={i}/>
+         className={"mx-3 my-3 py-1 skills-modal-buttons"}
+         modalText={<SkillsPieContainer  dataKey={`${i}pie`} item={item.barsValue} index={i}/>
                     }
                     /> 
 
@@ -160,7 +160,8 @@ class contacts extends Component {
                     midelStick = { height: "0%", top: "0%" };
 
 
-                return <ListGroupItem  key={"education"+i} className="py-0 education-item-wrapper  experience-stick-list-containe" >
+                return <ListGroupItem
+                    key={"education"+i} className="py-0 education-item-wrapper  experience-stick-list-containe" >
                     <Row>
                     
                     <Col className="d-flex align-items-center" xs={1}>

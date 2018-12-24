@@ -54,6 +54,8 @@
     "deploy": "gh-pages -b master -d build"
   },
   "devDependencies": {
+    "ajv": "^6.6.2",
+    "browserify-css": "^0.12.0",
     "gh-pages": "^1.2.0",
     "react-ionicons": "^2.1.6",
     "reactstrap": "^6.3.0",

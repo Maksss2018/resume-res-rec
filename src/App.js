@@ -75,12 +75,12 @@ class App extends Component {
        <Row className=" d-flex align-items-center" >
       <Col sm={12} md={6} lg={5} >
       <div className="my-3 my-md-2 d-flex align-items-center mx-auto circel-wrapper-for-img">
-      <img src={YouPhoto}  class="mx-auto img-fluid" alt="JavaScript developer"/>
+      <img src={YouPhoto}  className="mx-auto img-fluid" alt="JavaScript developer"/>
       </div>
       </Col>
       <Col sm={12} md={6} lg={7} >
       <h1   className={this.state.width<=756?" text-center  header-name ":"  header-name "} >
-      {UserInfo.name}<br/><span class="profesion-name">{UserInfo.profetion}</span>
+      {UserInfo.name}<br/><span className="profesion-name">{UserInfo.profetion}</span>
       </h1>
       </Col>
        </Row>
