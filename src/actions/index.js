@@ -1,6 +1,5 @@
 //import request from 'superagent'
 //import {setCookie, getCookie} from '../utility/cookie'
-import conf from './config.json'
 /*
 export const login = (username, password) => {
   return (dispatch) => {
