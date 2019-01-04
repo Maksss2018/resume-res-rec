@@ -45,11 +45,11 @@ class CvComponentMain extends Component {
     }
     componentDidUpdate(prevProps,prevState){
       let  {UserInfo} = this.props;
-        if(prevProps!==UserInfo){
+      /*  if(prevProps!==UserInfo){
             if(UserInfo!==this.state.UserInfo){
              this.setState({UserInfo});
             }
-        }
+        }*/
     }
     componentWillUnmount() {
         window.removeEventListener("resize", this.WindowResize);
