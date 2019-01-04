@@ -1,13 +1,12 @@
 import React, {Component} from "react";
-
-//import {connect} from 'react-redux'
+import {connect} from 'react-redux'
 //import {} from './actions/'
 
 import {Col, Row} from "reactstrap";
 import Contacts from "../../containers/contacts.js";
 import YouPhoto from "../../content/img/user-photo.jpg";
 import "../../App.css";
-import UserInfo from "../../content/user-info.json";
+//import UserInfo from "../../content/user-info.json";
 import MyInfo from "../../containers/my-info.js";
 import Interests from "../../containers/interests.js";
 import References from "../../containers/references.js";
@@ -15,10 +14,11 @@ import Experience from "../../containers/experience.js";
 import Education from "../../containers/education.js";
 import Pie from "../../containers/pie.js";
 class CvComponentMain extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            width: null
+            width: null,
+            UserInfo:null||this.props.UserInfo
         };
         this.animatingWRapper = this.animatingWRapper.bind(null);
         this.WindowResize = this.WindowResize.bind(this);
@@ -42,6 +42,14 @@ class CvComponentMain extends Component {
         }, ArrayOfListItemsExp.length * 1050);
         this.WindowResize;
         window.addEventListener("resize", this.WindowResize);
+    }
+    componentDidUpdate(prevProps,prevState){
+      let  {UserInfo} = this.props;
+        if(prevProps!==UserInfo){
+            if(UserInfo!==this.state.UserInfo){
+             this.setState({UserInfo});
+            }
+        }
     }
     componentWillUnmount() {
         window.removeEventListener("resize", this.WindowResize);
@@ -67,23 +75,19 @@ class CvComponentMain extends Component {
         links.style.opacity = "1";
     }
     render() {
-        let excerptAbout = UserInfo.about.slice(0, 200);
+        let {UserInfo} = this.state;
+        let excerptAbout = UserInfo!==null?UserInfo.about.slice(0, 200):"loading...";
         return (
             <div>
                 <Row>
 
-
                     <Col>
-
-
 
                     </Col>
 
 
-
-
-
                 </Row>
+
                 <Row className="header justify-content-center row ">
 
                     <div className={this.state.width<=1202?"container-fluid":"container"} >
@@ -98,7 +102,7 @@ class CvComponentMain extends Component {
                                     </Col>
                                     <Col sm={12} md={6} lg={7} >
                                         <h1   className={this.state.width<=756?" text-center  header-name ":"  header-name "} >
-                                            {UserInfo.name}<br/><span className="profesion-name">{UserInfo.profetion}</span>
+                                            {UserInfo!==null?UserInfo.name:"Loading"}<br/><span className="profesion-name">{UserInfo!==null?UserInfo.profetion:"Loading"}</span>
                                         </h1>
                                     </Col>
                                 </Row>
@@ -120,27 +124,25 @@ class CvComponentMain extends Component {
                     <Row className="content">
                         <Col md={4}>
                             <Row className="px-3 pl-md-5 pb-5 pt-5 pr-2 d-flex justify-content-center">
-
-                                <MyInfo
+                                {UserInfo!==null?<MyInfo
                                     excerpt={excerptAbout}
                                     text={UserInfo.about}
                                 />
-
-                                <Interests  />
-
-                                <References />
+                                    :""}
+                                {UserInfo!==null? <Interests  />:""}
+                                {UserInfo!==null? <References />:""}
 
                             </Row>
                         </Col>
                         <Col md={8}>
                             <Row className="p-xs-2 my-xs-2  my-md-4  p-md-3 p-lg-4 d-flex justify-content-center">
                                 <Col sm={12}>
+                                    {UserInfo!==null?  <Experience/>:""}
 
-                                    <Experience/>
+                                    {UserInfo!==null? <Education/>:""}
 
-                                    <Education/>
+                                    {UserInfo!==null? <Pie/>:""}
 
-                                    <Pie/>
 
                                 </Col>
                             </Row>
@@ -153,16 +155,16 @@ class CvComponentMain extends Component {
     }
 }
 
-export default CvComponentMain;
+const mapStateToProps = (state) => {
+    return {
+        UserInfo: state.auth
+    }
+}
 /*
- const mapStateToProps = (state) => {
- return {
- auth: state.auth
- }
- }
- const mapDispatchToProps = (dispatch) => ({
- listViewData: () => dispatch(listViewData())
- })
- export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
-
+const mapDispatchToProps = (dispatch) => ({
+    listViewData: () => dispatch(listViewData())
+})
 */
+export default connect(mapStateToProps, false)(CvComponentMain)
+//export default connect(mapStateToProps, mapDispatchToProps)(CvComponentMain)
+

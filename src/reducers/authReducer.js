@@ -1,11 +1,18 @@
 //import {getCookie} from '../utility/cookie'
-export default (state = 'Token', action) => {
-  switch (action.type) {
+export default (state = null) => {
+   return {
+        "name": "Malyi M.G.",
+        "profetion": "JavaScript developer",
+        "title": " JavaScript developer Malyi M.G. ",
+        "about": "Originally I'm from the city of Odessa Ukraine. Here I was born and raised. In 2005 I graduated from high school with in-depth study of English (school №86). After I enteredthe Odessa National University . I Successfully graduated from the Law Faculty in 2011. After graduation, I went to an urgent compulsory military service with the aim of becoming a Professional military.But unfortunately the conditions that offer our country at that time did not suit me. And I went back to my hometown for that to become a member of the Ukrainian Security Service. At that time I started to get involved in electronics, though it did not fit my humanitarian education. At the same time, I began to self-study HTML( just for fun). At the same time I was accepted for an internship of state executive service. After a three-month internship, I successfully passed the examination for the post of an official. But the state has offered me a job too far from civilization, that I as a lawyer and a cultured person is not liked. Later, I worked for a long time assistant of Lawyer. That did not bring much income and the necessary experience. What compelled me to seek public office. And I got a job in 2013 in the Public Joint-Stock Bank 'PrivatBank' for the post of lawyer in the Legal Collection Department . There I worked for 4 months which allowed me to raise money for the care of study at the sailor. At this time I'm trying to overpower php which of course could not have been a suitable educational material, and when it came, there was no teacher. What led me to think about the need to raise money on the normal IT training. And so in a short time, I successfully passed the exams at the sailor, and set sail on a cruise ship. It was unforgettable experience as I was able to swim nearly the entire western and northern Europe, including Iceland. Of course drudgery, not allows me to spend time on a favourite hobby - programming. But I warmed the idea that soon I will be able to return home and enrol in training. After three months I went ashore, happy and rich. I had enough money to pay for contract in IT school Step on web development training.I learned html / html5 CSS / CSS3 (and Bootstrap) and successfully passed the exam on native JavaScript (11/12 my score) and jQuery, php (11/12).Since the completion of the courses in the 'Step', I have learned to work with angular . Also I deepened my knowledge in the field of wordpress, php etc. For some time I was working with Amazon technologies, and now I have a starting knowledges in AWS RDS, AWS ES2, AWS AMI etc. Last place of work was BeInWeb media-studio as front-end (HTML,CSS3,JS) -from November 2017 till 15.02.2018. For this time I learn something new from back-end but don`t have a possibility to finish project - most part of the time I was fixing js bugs and helping to finish projects of my workmates. Unfortunately I'm more interesting in good manager and opportunity to learn new in developing then to wait when senior JS developer well appear in this team, but I have learned how to use phpQuery.php and also i get a small experience of working with CMS OpenCart. Since July 25, 2018 began acquaintance with the react and other interesting technologies, sou there was a need to work with github."
+    }
+
+  /*  switch (action.type) {
     case 'LOGIN':
       return (action.payload);
     case 'LOGOUT':
       return '';
     default:
       return state
-  }
+  }*/
 }
