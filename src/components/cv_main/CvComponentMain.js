@@ -13,16 +13,41 @@ import References from "../../containers/references.js";
 import Experience from "../../containers/experience.js";
 import Education from "../../containers/education.js";
 import Pie from "../../containers/pie.js";
+import firebase from "../../database/dbscript.js";
 class CvComponentMain extends Component {
     constructor(props) {
         super(props);
+        this.unsubscribe = null;
+        this.ref = firebase.firestore().collection('posts');
         this.state = {
             width: null,
             UserInfo:null||this.props.UserInfo
         };
+
+        this.handelonCOnllectionUpdate = this.handelonCOnllectionUpdate.bind(this);
+        this.onCollectionUpdate = this.onCollectionUpdate.bind(this);
         this.animatingWRapper = this.animatingWRapper.bind(null);
         this.WindowResize = this.WindowResize.bind(this);
     }
+
+    handelonCOnllectionUpdate =  (e)=>{
+        e.preventDefault();
+
+        this.unsubscribe =  this.ref.onSnapshot(this.onCollectionUpdate);
+
+    };
+    onCollectionUpdate = (querySnapshot) => {
+        let  posts = [];
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            posts.push(data);
+
+            console.log(" DATA === data :"+JSON.stringify(data));
+            console.log(" DATA "+JSON.stringify(posts));
+        });
+
+    };
+
     componentDidMount() {
         let ArrayOfListItemsExp = document.getElementsByClassName("experience-item-wrapper"),
             ArrayOfListItemsEdu = document.getElementsByClassName("education-item-wrapper"),
@@ -33,6 +58,7 @@ class CvComponentMain extends Component {
                 animatedItem++;
                 animatedItem !== ArrayOfListItemsExp.length + 1 ? this.animatingWRapper("experience", animatedItem, ArrayOfListItemsExp.length) : clearInterval(firstInterval);
             }, 700); //, 1200);
+
         setTimeout(() => {
             let animatedItem = 0,
                 secondInterval = setInterval(() => {
@@ -88,7 +114,9 @@ class CvComponentMain extends Component {
 
                 </Row>
 
-                <Row className="header justify-content-center row ">
+                <Row
+                    onClick={this.handelonCOnllectionUpdate}
+                    className="header justify-content-center row ">
 
                     <div className={this.state.width<=1202?"container-fluid":"container"} >
                         <Row >
