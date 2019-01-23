@@ -1,6 +1,6 @@
 import * as firebase from 'firebase';
 import firestore from 'firebase/firestore'
-
+//https://console.firebase.google.com/project/maksss2018/database/firestore/data~2Fposts~2FVX0Q3b8b2FrmZjZT5uXk
 const settings = {};
 
 const config = {

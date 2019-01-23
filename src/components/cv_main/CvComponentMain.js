@@ -1,52 +1,26 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux'
-//import {} from './actions/'
-
 import {Col, Row} from "reactstrap";
 import Contacts from "../../containers/contacts.js";
 import YouPhoto from "../../content/img/user-photo.jpg";
 import "../../App.css";
-//import UserInfo from "../../content/user-info.json";
 import MyInfo from "../../containers/my-info.js";
 import Interests from "../../containers/interests.js";
 import References from "../../containers/references.js";
 import Experience from "../../containers/experience.js";
 import Education from "../../containers/education.js";
 import Pie from "../../containers/pie.js";
-import firebase from "../../database/dbscript.js";
+
 class CvComponentMain extends Component {
     constructor(props) {
         super(props);
-        this.unsubscribe = null;
-        this.ref = firebase.firestore().collection('posts');
         this.state = {
             width: null,
             UserInfo:null||this.props.UserInfo
         };
-
-        this.handelonCOnllectionUpdate = this.handelonCOnllectionUpdate.bind(this);
-        this.onCollectionUpdate = this.onCollectionUpdate.bind(this);
-        this.animatingWRapper = this.animatingWRapper.bind(null);
+  this.animatingWRapper = this.animatingWRapper.bind(null);
         this.WindowResize = this.WindowResize.bind(this);
     }
-
-    handelonCOnllectionUpdate =  (e)=>{
-        e.preventDefault();
-
-        this.unsubscribe =  this.ref.onSnapshot(this.onCollectionUpdate);
-
-    };
-    onCollectionUpdate = (querySnapshot) => {
-        let  posts = [];
-        querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            posts.push(data);
-
-            console.log(" DATA === data :"+JSON.stringify(data));
-            console.log(" DATA "+JSON.stringify(posts));
-        });
-
-    };
 
     componentDidMount() {
         let ArrayOfListItemsExp = document.getElementsByClassName("experience-item-wrapper"),
@@ -66,16 +40,16 @@ class CvComponentMain extends Component {
                     animatedItem !== ArrayOfListItemsEdu.length + 1 ? this.animatingWRapper("education", animatedItem, ArrayOfListItemsEdu.length) : clearInterval(secondInterval)
                 }, 700);
         }, ArrayOfListItemsExp.length * 1050);
-        this.WindowResize;
+        this.WindowResize();
         window.addEventListener("resize", this.WindowResize);
     }
     componentDidUpdate(prevProps,prevState){
-      let  {UserInfo} = this.props;
-      /*  if(prevProps!==UserInfo){
-            if(UserInfo!==this.state.UserInfo){
-             this.setState({UserInfo});
-            }
-        }*/
+        /* let  {UserInfo} = this.props;
+          if(prevProps!==UserInfo){
+              if(UserInfo!==this.state.UserInfo){
+               this.setState({UserInfo});
+              }
+          }*/
     }
     componentWillUnmount() {
         window.removeEventListener("resize", this.WindowResize);
@@ -187,7 +161,7 @@ const mapStateToProps = (state) => {
     return {
         UserInfo: state.auth
     }
-}
+};
 /*
 const mapDispatchToProps = (dispatch) => ({
     listViewData: () => dispatch(listViewData())
