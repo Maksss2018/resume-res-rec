@@ -162,7 +162,11 @@ class EducationComponentMain extends Component {
                                  },
                                {
                                    classN:" my-3 ",
-                                   action:(e)=>console.log(`${e.target.value}`),
+                                   action:(e)=>{
+                                       console.log(`${e.target.value}`);
+                                       let trg  = e.target.value;
+                                       return e.target.value = trg<=0?0:trg
+                                   },
                                    type:"number",
                                    name:"supHours",
                                    id:"supHours",
@@ -170,7 +174,11 @@ class EducationComponentMain extends Component {
                                },
                                {
                                    classN:" my-3 ",
-                                   action:(e)=>console.log(`${e.target.value}`),
+                                   action:(e)=>{
+                                       console.log(`${e.target.value}`);
+                                       let trg  = e.target.value;
+                                       return e.target.value = trg<=0?0:trg
+                                   },
                                    type:"number",
                                    name:"realHours",
                                    id:"realHours",

@@ -15,6 +15,7 @@ class EducationComponentItemCRS extends Component {
 
         this.handelonCOnllectionUpdate = this.handelonCOnllectionUpdate.bind(this);
         this.onCollectionUpdate = this.onCollectionUpdate.bind(this);
+        this.makeDateObject = this.makeDateObject.bind(null);
     }
 
     handelonCOnllectionUpdate =  (e)=>{
@@ -29,13 +30,20 @@ class EducationComponentItemCRS extends Component {
         });
         this.setState({crsList})
     };
-
+    makeDateObject = (year,month,day) => {
+        let date = new Date(year,day,month),
+            trg =  `${date}`.split(" "),
+            [ a,b,c, d,  ...other] =  trg;
+        return(` ${d} ${b} ${c} ${a} `);
+    };
     componentDidMount() {
-    }
+    };
     componentDidUpdate(prevProps,prevState){
-    }
+    };
     render() {
-        let {data} = this.props;/*
+        let {data} = this.props,
+            [yearStr,monthStr,dayStr] =   data.time["start_date"].split("-"),
+            [yearFnsh,monthFnsh,dayFnsh] =  data.time["finish_date"].split("-");  /*
         let listMain = crsList!==null?crsList.map((crs,ind)=>{
             return(ind);
         }):"loading...";*/
@@ -48,12 +56,18 @@ class EducationComponentItemCRS extends Component {
         return (
             <div>
                 <Card>
-                    <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
+                    <CardImg top width="100%" alt={`${data.name} - Malyi M.G. `} src={`../../images/${data.img[0].url}`} />
                     <CardBody className={`bg-${data.status!==0 ?"success":"warning"} text-white`}>
                         <CardTitle>{data.company}</CardTitle>
                         <CardSubtitle>{data.nameCrs}</CardSubtitle>
                         <CardText>
-                            {JSON.stringify(data.time)}
+                            <br/>
+                            {this.makeDateObject(Number(yearStr), Number(dayStr), Number(monthStr))}
+                            <br/>
+                            {this.makeDateObject(Number(yearFnsh), Number(dayFnsh), Number(monthFnsh))}
+                            <Button>
+                                status :
+                            </Button>
                         </CardText>
 
                         <Button>Button { typeof( data.status)} </Button>

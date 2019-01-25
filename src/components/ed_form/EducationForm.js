@@ -49,10 +49,20 @@ class EducationForm extends React.Component {
                         key={`${name}-${ind}-${type}`}
                         id={`${name}-${ind}-${type}`} >
                         {options.map((opt,ind)=>{
-                            return(<option value={ind} >{opt}</option>);
+                            return(<option key={`~${ind}`} value={ind} >{opt}</option>);
                         })}
                         </Input>
                         );
+                    case "number":
+                        return( <Input
+                            className={classN}
+                            onChange={action}
+                            type={type}
+                            placeholder={placeHldr}
+                            name={name}
+                            key={`${name}-${ind}-${type}`}
+                            id={`${name}-${ind}-${type}`} />);
+
                     default:
                         return( <Input
                             className={classN}
