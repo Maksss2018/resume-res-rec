@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+
 //import {} from './actions/'
 import {/*Col, Container, Row,*/ Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button} from "reactstrap";
@@ -38,17 +39,24 @@ class EducationComponentItemCRS extends Component {
         let listMain = crsList!==null?crsList.map((crs,ind)=>{
             return(ind);
         }):"loading...";*/
+        /*
+        "company":"Beetroot Academy",
+        "nameCrs":"Advanced JavaScript",
+        "status":0,
+        "time":{"finish_date":"","real_hours":"","start_date":"","sup_hours":""}
+        */
         return (
             <div>
                 <Card>
                     <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-                    <CardBody>
-                        <CardTitle>Card title</CardTitle>
-                        <CardSubtitle>Card subtitle</CardSubtitle>
+                    <CardBody className={`bg-${data.status!==0 ?"success":"warning"} text-white`}>
+                        <CardTitle>{data.company}</CardTitle>
+                        <CardSubtitle>{data.nameCrs}</CardSubtitle>
                         <CardText>
-                            {JSON.stringify(data)}
+                            {JSON.stringify(data.time)}
                         </CardText>
-                        <Button>Button</Button>
+
+                        <Button>Button { typeof( data.status)} </Button>
                     </CardBody>
                 </Card>
             </div>
@@ -66,6 +74,6 @@ const mapDispatchToProps = (dispatch) => ({
     listViewData: () => dispatch(listViewData())
 })
 */
+//export default withRouter (connect(mapStateToProps, false))(EducationComponentItemCRS)
 export default connect(mapStateToProps, false)(EducationComponentItemCRS)
 //export default connect(mapStateToProps, mapDispatchToProps)(CvComponentMain)
-

@@ -3,11 +3,11 @@ import {connect} from 'react-redux'
 //import {} from './actions/'
 import {Col, Container, Row} from "reactstrap";
 import EducationComponentItemCRS from "../../components/ed_items_crs/EducationComponentItemCRS.js";
-
+import EducationForm from "../../components/ed_form/EducationForm.js";
 
 import firebase from "../../database/dbscript.js";
 /*
-https://console.firebase.google.com/project/maksss2018/database/firestore/data~2Fbeetroot~2FfI2jdCMi0Egoy6q5dKal
+https://console.firebase.google.com/project/maksss2018/database/firestore/data~2Feducation~2FFJVmZtgkFYRFQ24NYRmf
 модуль 1
 JavaScript
 
@@ -105,20 +105,91 @@ class EducationComponentMain extends Component {
     componentDidUpdate(prevProps,prevState){
        // let  {UserInfo} = this.props;
     }
+
     render() {
         let {crsList} = this.state,
+            { params } = this.props.match,
             listMain = crsList!==null?crsList.map((crs,ind)=>{
                  let {} = crs;
-            return(<EducationComponentItemCRS key={`key-of-eductionItem-${ind}`} data={crs}/>);
+            return(<Col
+                    key={`key-of-eductionItem-${ind}`}
+                    xs={12} sm={6} md={4} lg={3}>
+                    <EducationComponentItemCRS  data={crs}/>
+                </Col>
+                );
         }):"loading...";
         return (
 
             <Container>
-                 <Row>
-                     <Col>
-                         {listMain}
-                     </Col>
+                 <Row className={` py-3 `}>
+                     {listMain}
                  </Row>
+                {
+                    params.action!=="addNewEductionItem"?`${params.action}`:<Row>
+                        <Col>
+                           < EducationForm inputs={[
+                               {
+                                   classN:" my-3 ",
+                                   action:(e)=>console.log(`${e.target.value}`),
+                                   type:"text",
+                                   name:"company",
+                                   id:"companyForEd",
+                                   placeHldr:"enter name of Company"
+                               },
+                               {
+                                   classN:" my-3 ",
+                                   action:(e)=>console.log(`${e.target.value}`),
+                                   type:"text",
+                                   name:"trainings",
+                                   id:"textForEd",
+                                   placeHldr:"name of trainings"
+                               },
+                               {
+                                   classN:" my-3 ",
+                                   action:(e)=>console.log(`${e.target.value}`),
+                                   type:"date",
+                                   name:"finishDate",
+                                   id:"finishDate",
+                                   placeHldr:"enter last day of trainings",
+                                 },
+                               {
+                                   classN:" my-3 ",
+                                   action:(e)=>console.log(`${e.target.value}`),
+                                   type:"date",
+                                   name:"startDate",
+                                   id:"startDate",
+                                   placeHldr:"enter the day  when trainings will start "
+                                 },
+                               {
+                                   classN:" my-3 ",
+                                   action:(e)=>console.log(`${e.target.value}`),
+                                   type:"number",
+                                   name:"supHours",
+                                   id:"supHours",
+                                   placeHldr:""
+                               },
+                               {
+                                   classN:" my-3 ",
+                                   action:(e)=>console.log(`${e.target.value}`),
+                                   type:"number",
+                                   name:"realHours",
+                                   id:"realHours",
+                                   placeHldr:""
+                                },
+                               {
+                                   classN:" my-3 ",
+                                   action:(e)=>console.log(`${e.target.value}`),
+                                   type:"select",
+                                   options:[" not started "," in progress "," finished ", " stopped "],
+                                   name:"realHours",
+                                   id:"realHours",
+                                   placeHldr:""
+                               }
+                           ]}/>
+                        </Col>
+                    </Row>
+                }
+
             </Container>
         );
     }
