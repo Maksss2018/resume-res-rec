@@ -1,5 +1,31 @@
 //import request from 'superagent'
 //import {setCookie, getCookie} from '../utility/cookie'
+import firebase from "../database/dbscript";
+
+export const AddNewTrainingPLace = (trnPlace) =>{
+
+    let {company,
+        trainings,
+        link,
+        finishDate, startDate, supHours,realHours} = trnPlace;
+    firebase.firestore().collection("education")
+        .add({
+            "company":company,
+            "link":link,
+            "nameCrs":trainings,
+            "status":0,
+            "time":{"finish_date":finishDate,"real_hours":realHours,"start_date":  startDate,"sup_hours":supHours},
+            "img":[{"name":"Beetroot","url":"ClAEUbkZ.jpg"},{"name":"beetroot","url":"79539630.jpg"}],
+        })
+        .then(function(docRef) {
+            console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+        });/* */
+
+}
+
 /*
 export const login = (username, password) => {
   return (dispatch) => {

@@ -10,22 +10,28 @@ class EducationForm extends React.Component {
         super(props);
        // this.handelReloadComments = this.handelReloadComments.bind(this);
         this.onSending =this.onSending.bind(this);
-        this.onTyping = this.onTyping.bind(this);
+        this.onChangeData = this.onChangeData.bind(this);
         this.state = {
             text: null,
             issueId: null
         };
     }
 
-    onTyping(e) {
+    onChangeData(e) {
         e.preventDefault();
-        let text = e.target.value;
-        this.setState({ text });
+        let name = e.target.name ,
+            val = e.target.value;
+
+        this.setState({ [name]:val });
+       // console.log(" name of  target "+action);
+        console.log(" name of  target "+name);
     }
     onSending(e) {
         e.preventDefault();
         let //{inputs} = this.props,
             { text } = this.state;
+
+        console.log(" this.state "+JSON.stringify(this.state));
        // this.props.setComment({value: prevIssues!==null?[text,...prevIssues]:[text], ...data});
      //   this.handelReloadComments;
     }/*
@@ -42,7 +48,7 @@ class EducationForm extends React.Component {
                         let { options}  = inp;
                     return( <Input
                         className={classN}
-                        onChange={action}
+                        onChange={this.onChangeData}
                         type={type}
                         placeholder={placeHldr}
                         name={name}
@@ -56,7 +62,7 @@ class EducationForm extends React.Component {
                     case "number":
                         return( <Input
                             className={classN}
-                            onChange={action}
+                            onChange={this.onChangeData}
                             type={type}
                             placeholder={placeHldr}
                             name={name}
@@ -66,7 +72,7 @@ class EducationForm extends React.Component {
                     default:
                         return( <Input
                             className={classN}
-                            onChange={action}
+                            onChange={this.onChangeData}
                             type={type}
                             placeholder={placeHldr}
                             name={name}
@@ -77,7 +83,7 @@ class EducationForm extends React.Component {
 
             }): <Input
                 className={" text-body "}
-                onChange={this.onTyping}
+                onChange={this.onChangeData}
                 type="textarea"
                 name="text"
                 id={`text-`} />;

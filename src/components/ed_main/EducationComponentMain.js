@@ -78,7 +78,6 @@ class EducationComponentMain extends Component {
             UserInfo:null||this.props.UserInfo,
             crsList:null
         };
-
         this.handelonCOnllectionUpdate = this.handelonCOnllectionUpdate.bind(this);
         this.onCollectionUpdate = this.onCollectionUpdate.bind(this);
     }
@@ -93,7 +92,8 @@ class EducationComponentMain extends Component {
         let crsList = [];
         querySnapshot.forEach((doc) => {
             const res = doc.data();
-            crsList = res["curses_list"];
+            console.log("+++"+JSON.stringify(res));
+            crsList =[...crsList,{...res}];
         });
 
         this.setState({crsList})
@@ -105,16 +105,16 @@ class EducationComponentMain extends Component {
     componentDidUpdate(prevProps,prevState){
        // let  {UserInfo} = this.props;
     }
-
     render() {
         let {crsList} = this.state,
             { params } = this.props.match,
+            editable=params.action!=="addNewEductionItem",
             listMain = crsList!==null?crsList.map((crs,ind)=>{
                  let {} = crs;
             return(<Col
                     key={`key-of-eductionItem-${ind}`}
                     xs={12} sm={6} md={4} lg={3}>
-                    <EducationComponentItemCRS  data={crs}/>
+                    <EducationComponentItemCRS  editable={editable}  data={crs}/>
                 </Col>
                 );
         }):"loading...";
@@ -125,9 +125,10 @@ class EducationComponentMain extends Component {
                      {listMain}
                  </Row>
                 {
-                    params.action!=="addNewEductionItem"?`${params.action}`:<Row>
+                    editable?`${params.action}`:<Row>
                         <Col>
-                           < EducationForm inputs={[
+                           < EducationForm
+                                           inputs={[
                                {
                                    classN:" my-3 ",
                                    action:(e)=>console.log(`${e.target.value}`),
@@ -144,6 +145,14 @@ class EducationComponentMain extends Component {
                                    id:"textForEd",
                                    placeHldr:"name of trainings"
                                },
+                                               {
+                                                   classN:" my-3 ",
+                                                   action:(e)=>console.log(`${e.target.value}`),
+                                                   type:"text",
+                                                   name:"link",
+                                                   id:"companyForEd",
+                                                   placeHldr:"enter link "
+                                               },
                                {
                                    classN:" my-3 ",
                                    action:(e)=>console.log(`${e.target.value}`),
@@ -215,4 +224,3 @@ const mapDispatchToProps = (dispatch) => ({
 */
 export default connect(mapStateToProps, false)(EducationComponentMain)
 //export default connect(mapStateToProps, mapDispatchToProps)(CvComponentMain)
-

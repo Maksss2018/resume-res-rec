@@ -41,7 +41,7 @@ class EducationComponentItemCRS extends Component {
     componentDidUpdate(prevProps,prevState){
     };
     render() {
-        let {data} = this.props,
+        let {data,editable} = this.props,
             [yearStr,monthStr,dayStr] =   data.time["start_date"].split("-"),
             [yearFnsh,monthFnsh,dayFnsh] =  data.time["finish_date"].split("-");  /*
         let listMain = crsList!==null?crsList.map((crs,ind)=>{
@@ -61,16 +61,17 @@ class EducationComponentItemCRS extends Component {
                         <CardTitle>{data.company}</CardTitle>
                         <CardSubtitle>{data.nameCrs}</CardSubtitle>
                         <CardText>
-                            <br/>
                             {this.makeDateObject(Number(yearStr), Number(dayStr), Number(monthStr))}
                             <br/>
                             {this.makeDateObject(Number(yearFnsh), Number(dayFnsh), Number(monthFnsh))}
+                            <br/>
+
                             <Button>
                                 status :
                             </Button>
                         </CardText>
-
                         <Button>Button { typeof( data.status)} </Button>
+                        {editable?"":<Button className={`animated bounceIn`}> change info </Button>}
                     </CardBody>
                 </Card>
             </div>
