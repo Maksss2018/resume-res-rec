@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux';
-
-//import {} from './actions/'
+import {DeleteTrainingPlace} from '../../actions/'
 import {/*Col, Container, Row,*/ Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button} from "reactstrap";
 import "../../App.css";
@@ -74,9 +73,18 @@ class EducationComponentItemCRS extends Component {
                             Button { typeof( data.status)}
                         </Button>
                         {editable?""
-                            :<Button className={`m-1 animated bounceIn`}>
+                            :<Button className={`btn-warning m-1 animated bounceIn`}>
                                 change info
                         </Button>}
+                        {editable?""
+                            :<Button
+                                onClick={(e)=>{
+                                    e.preventDefault();
+                                    this.props.DeleteTrainingPlace(data.dbKeys)
+                                }}
+                                className={`btn-danger m-1 animated bounceIn`}>
+                                Delete
+                            </Button>}
                     </CardBody>
                 </Card>
             </div>
@@ -88,12 +96,10 @@ const mapStateToProps = (state) => {
     return {
      //   UserInfo: state.auth
     }
-}
-/*
+};
 const mapDispatchToProps = (dispatch) => ({
-    listViewData: () => dispatch(listViewData())
-})
-*/
+    DeleteTrainingPlace: (key) => dispatch(DeleteTrainingPlace(key))
+});
 //export default withRouter (connect(mapStateToProps, false))(EducationComponentItemCRS)
-export default connect(mapStateToProps, false)(EducationComponentItemCRS)
+export default connect(mapStateToProps, mapDispatchToProps)(EducationComponentItemCRS)
 //export default connect(mapStateToProps, mapDispatchToProps)(CvComponentMain)

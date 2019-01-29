@@ -90,10 +90,11 @@ class EducationComponentMain extends Component {
     };
     onCollectionUpdate = (querySnapshot) => {
         let crsList = [];
-        querySnapshot.forEach((doc) => {
-            const res = doc.data();
+        querySnapshot.forEach(function(doc){
+            const res = doc.data(),
+                dbKeys =doc.id;
             console.log("+++"+JSON.stringify(res));
-            crsList =[...crsList,{...res}];
+            crsList =[...crsList,{dbKeys,...res}];
         });
 
         this.setState({crsList})
@@ -114,13 +115,22 @@ class EducationComponentMain extends Component {
             return(<Col
                     key={`key-of-eductionItem-${ind}`}
                     xs={12} sm={6} md={4} lg={3}>
-                    <EducationComponentItemCRS  editable={editable}  data={crs}/>
+                    <EducationComponentItemCRS
+                        editable={editable}
+                        data={crs}/>
                 </Col>
                 );
         }):"loading...";
         return (
 
             <Container>
+                <Row>
+                    <Col>
+                        <h4>
+                            {crsList!==null?JSON.stringify(Object.keys(crsList)):"error"}
+                        </h4>
+                    </Col>
+                </Row>
                  <Row className={` py-3 `}>
                      {listMain}
                  </Row>

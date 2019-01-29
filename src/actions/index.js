@@ -36,8 +36,26 @@ export const AddNewTrainingPlace = (trnPlace,img=null) =>{
 
     }
 
-}
+};
+export const DeleteTrainingPlace = (key) =>{
+    return (dispatch) => {
+        let  k = key;
+        firebase.firestore().collection("education")
+            .doc(k)
+            .delete()
+            .then((docRef)=>{
+                console.log("DELETED ", key);
+            })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+            });
+        dispatch({
+            type: 'DELETED_ITEM_ED_LIST'
+        })
 
+    }
+
+};
 /*
 export const login = (username, password) => {
   return (dispatch) => {
