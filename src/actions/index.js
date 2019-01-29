@@ -2,27 +2,39 @@
 //import {setCookie, getCookie} from '../utility/cookie'
 import firebase from "../database/dbscript";
 
-export const AddNewTrainingPLace = (trnPlace) =>{
+export const AddNewTrainingPlace = (trnPlace,img=null) =>{
+    return (dispatch) => {
 
-    let {company,
-        trainings,
-        link,
-        finishDate, startDate, supHours,realHours} = trnPlace;
-    firebase.firestore().collection("education")
-        .add({
-            "company":company,
-            "link":link,
-            "nameCrs":trainings,
-            "status":0,
-            "time":{"finish_date":finishDate,"real_hours":realHours,"start_date":  startDate,"sup_hours":supHours},
-            "img":[{"name":"Beetroot","url":"ClAEUbkZ.jpg"},{"name":"beetroot","url":"79539630.jpg"}],
-        })
-        .then(function(docRef) {
-            console.log("Document written with ID: ", docRef.id);
-        })
-        .catch(function(error) {
-            console.error("Error adding document: ", error);
-        });/* */
+        let {
+                company,
+                trainings,
+                link,
+                status,
+                finishDate, startDate, supHours,realHours
+            } = trnPlace,
+            image = img!==null?img:[{"url":"sketchpad.jpg","name":"real shit"}];
+
+
+        firebase.firestore().collection("education")
+            .add({
+                "company":company,
+                "link":link,
+                "nameCrs":trainings,
+                "status":status,
+                "time":{"finish_date":finishDate,"real_hours":realHours,"start_date":  startDate,"sup_hours":supHours},
+                "img":[...image],
+            })
+            .then(function(docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+            });
+              dispatch({
+                        type: 'NEW_ITEM_ED_LIST'
+                    })
+
+    }
 
 }
 

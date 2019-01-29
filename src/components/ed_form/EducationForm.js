@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {AddNewTrainingPlace} from '../../actions/'
 import { Col, Row, Button, Form, FormGroup, Input } from 'reactstrap';
 
 
@@ -11,10 +12,7 @@ class EducationForm extends React.Component {
        // this.handelReloadComments = this.handelReloadComments.bind(this);
         this.onSending =this.onSending.bind(this);
         this.onChangeData = this.onChangeData.bind(this);
-        this.state = {
-            text: null,
-            issueId: null
-        };
+        this.state={};
     }
 
     onChangeData(e) {
@@ -28,12 +26,7 @@ class EducationForm extends React.Component {
     }
     onSending(e) {
         e.preventDefault();
-        let //{inputs} = this.props,
-            { text } = this.state;
-
-        console.log(" this.state "+JSON.stringify(this.state));
-       // this.props.setComment({value: prevIssues!==null?[text,...prevIssues]:[text], ...data});
-     //   this.handelReloadComments;
+        this.props.AddNewTrainingPlace({...this.state},null);
     }/*
     handelReloadComments(){
        // this.props.publishComment;
@@ -111,7 +104,7 @@ const mapStateToProps = (state) => {
     }
 };
 const mapDispatchToProps = (dispatch) => ({
- //   setComment: (obj)=>dispatch(setComment(obj)), //obj.prjID / obj.issueID / obj.value
+    AddNewTrainingPlace: (obj,arrayImg)=>dispatch(AddNewTrainingPlace(obj,arrayImg)), //obj.prjID / obj.issueID / obj.value
     //getListOfProjectIssues :(id,cookies)=>dispatch(getListOfProjectIssues(id,cookies))
     //getByID : (i,crnt)=>dispatch(getByID(i,crnt))
     //  listViewData: () => dispatch(listViewData())

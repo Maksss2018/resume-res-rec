@@ -70,8 +70,13 @@ class EducationComponentItemCRS extends Component {
                                 status :
                             </Button>
                         </CardText>
-                        <Button>Button { typeof( data.status)} </Button>
-                        {editable?"":<Button className={`animated bounceIn`}> change info </Button>}
+                        <Button className={`m-1`} >
+                            Button { typeof( data.status)}
+                        </Button>
+                        {editable?""
+                            :<Button className={`m-1 animated bounceIn`}>
+                                change info
+                        </Button>}
                     </CardBody>
                 </Card>
             </div>
