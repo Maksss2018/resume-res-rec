@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux';
-import {DeleteTrainingPlace} from '../../actions/'
+import {deleteTrainingPlace,updateTrainingPlace} from '../../actions/'
 import {/*Col, Container, Row,*/ Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button} from "reactstrap";
 import "../../App.css";
@@ -75,16 +75,33 @@ class EducationComponentItemCRS extends Component {
                         {editable?""
                             :<Button className={`btn-warning m-1 animated bounceIn`}>
                                 change info
-                        </Button>}
+                            </Button>}
                         {editable?""
                             :<Button
                                 onClick={(e)=>{
                                     e.preventDefault();
-                                    this.props.DeleteTrainingPlace(data.dbKeys)
+                                    this.props.deleteTrainingPlace(data.dbKeys)
                                 }}
                                 className={`btn-danger m-1 animated bounceIn`}>
                                 Delete
                             </Button>}
+                        {
+                            editable?""
+                                :<Button
+                                    onClick={(e)=>{
+                                        e.preventDefault();
+                                        this.props.updateTrainingPlace(data.dbKeys)
+                                    }}
+                                    className={`btn-info m-1 animated bounceIn`}>
+                                    Update
+                                </Button>
+                            /*TODO:
+                            first set  current data  to  the Form fields  =>
+                            add some flag  to form status =>
+                            dont forget to  add  validation to Form and make it possibly
+                             to add link for images(special for GitHub pages)
+                            * */
+                        }
                     </CardBody>
                 </Card>
             </div>
@@ -94,11 +111,12 @@ class EducationComponentItemCRS extends Component {
 
 const mapStateToProps = (state) => {
     return {
-     //   UserInfo: state.auth
+        //   UserInfo: state.auth
     }
 };
 const mapDispatchToProps = (dispatch) => ({
-    DeleteTrainingPlace: (key) => dispatch(DeleteTrainingPlace(key))
+    deleteTrainingPlace: (key) => dispatch(deleteTrainingPlace(key)),
+    updateTrainingPlace: (key,newData,img) => dispatch(updateTrainingPlace(key,newData,img))
 });
 //export default withRouter (connect(mapStateToProps, false))(EducationComponentItemCRS)
 export default connect(mapStateToProps, mapDispatchToProps)(EducationComponentItemCRS)

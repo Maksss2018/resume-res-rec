@@ -104,117 +104,112 @@ class EducationComponentMain extends Component {
         this.unsubscribe =  this.ref.onSnapshot(this.onCollectionUpdate);
     }
     componentDidUpdate(prevProps,prevState){
-       // let  {UserInfo} = this.props;
+        // let  {UserInfo} = this.props;
     }
     render() {
         let {crsList} = this.state,
             { params } = this.props.match,
             editable=params.action!=="addNewEductionItem",
             listMain = crsList!==null?crsList.map((crs,ind)=>{
-                 let {} = crs;
-            return(<Col
-                    key={`key-of-eductionItem-${ind}`}
-                    xs={12} sm={6} md={4} lg={3}>
-                    <EducationComponentItemCRS
-                        editable={editable}
-                        data={crs}/>
-                </Col>
+                let {} = crs;
+                return(<Col
+                        key={`key-of-eductionItem-${ind}`}
+                        xs={12} sm={6} md={4} lg={3}>
+                        <EducationComponentItemCRS
+                            editable={editable}
+                            data={crs}/>
+                    </Col>
                 );
-        }):"loading...";
+            }):"loading...";
         return (
 
             <Container>
-                <Row>
-                    <Col>
-                        <h4>
-                            {crsList!==null?JSON.stringify(Object.keys(crsList)):"error"}
-                        </h4>
-                    </Col>
+
+                <Row className={` py-3 `}>
+                    {listMain}
                 </Row>
-                 <Row className={` py-3 `}>
-                     {listMain}
-                 </Row>
                 {
-                    editable?`${params.action}`:<Row>
-                        <Col>
-                           < EducationForm
-                               inputs={[
-                                   {
-                                       classN:" my-3 ",
-                                       action:(e)=>console.log(`${e.target.value}`),
-                                       type:"text",
-                                       name:"company",
-                                       id:"companyForEd",
-                                       placeHldr:"enter name of Company"
-                                   },
-                                   {
-                                       classN:" my-3 ",
-                                       action:(e)=>console.log(`${e.target.value}`),
-                                       type:"text",
-                                       name:"trainings",
-                                       id:"textForEd",
-                                       placeHldr:"name of trainings"
-                                   },
-                                   {
-                                       classN:" my-3 ",
-                                       action:(e)=>console.log(`${e.target.value}`),
-                                       type:"text",
-                                       name:"link",
-                                       id:"companyForEd",
-                                       placeHldr:"enter link https://"
-                                   },
-                                   {
-                                       classN:" my-3 ",
-                                       action:(e)=>console.log(`${e.target.value}`),
-                                       type:"date",
-                                       name:"finishDate",
-                                       id:"finishDate",
-                                       placeHldr:"enter last day of trainings",
-                                   },
-                                   {
-                                       classN:" my-3 ",
-                                       action:(e)=>console.log(`${e.target.value}`),
-                                       type:"date",
-                                       name:"startDate",
-                                       id:"startDate",
-                                       placeHldr:"enter the day  when trainings will start "
-                                   },
-                                   {
-                                       classN:" my-3 ",
-                                       action:(e)=>{
-                                           console.log(`${e.target.value}`);
-                                           let trg  = e.target.value;
-                                           return e.target.value = trg<=0?0:trg
-                                       },
-                                       type:"number",
-                                       name:"supHours",
-                                       id:"supHours",
-                                       placeHldr:""
-                                   },
-                                   {
-                                       classN:" my-3 ",
-                                       action:(e)=>{
-                                           console.log(`${e.target.value}`);
-                                           let trg  = e.target.value;
-                                           return e.target.value = trg<=0?0:trg
-                                       },
-                                       type:"number",
-                                       name:"realHours",
-                                       id:"realHours",
-                                       placeHldr:""
-                                   },
-                                   {
-                                       classN:" my-3 ",
-                                       action:(e)=>console.log(`${e.target.value}`),
-                                       type:"select",
-                                       options:[" not started "," in progress "," finished ", " stopped "],
-                                       name:"status",
-                                       id:"status",
-                                       placeHldr:""
-                                   }
-                           ]}/>
-                        </Col>
-                    </Row>
+                    editable?`${params.action}`
+                        :<Row>
+                            <Col>
+                                < EducationForm
+                                    inputs={[
+                                        {
+                                            classN:" my-3 ",
+                                            action:(e)=>console.log(`${e.target.value}`),
+                                            type:"text",
+                                            name:"company",
+                                            id:"companyForEd",
+                                            placeHldr:"enter name of Company"
+                                        },
+                                        {
+                                            classN:" my-3 ",
+                                            action:(e)=>console.log(`${e.target.value}`),
+                                            type:"text",
+                                            name:"trainings",
+                                            id:"textForEd",
+                                            placeHldr:"name of trainings"
+                                        },
+                                        {
+                                            classN:" my-3 ",
+                                            action:(e)=>console.log(`${e.target.value}`),
+                                            type:"text",
+                                            name:"link",
+                                            id:"companyForEd",
+                                            placeHldr:"enter link https://"
+                                        },
+                                        {
+                                            classN:" my-3 ",
+                                            action:(e)=>console.log(`${e.target.value}`),
+                                            type:"date",
+                                            name:"finishDate",
+                                            id:"finishDate",
+                                            placeHldr:"enter last day of trainings",
+                                        },
+                                        {
+                                            classN:" my-3 ",
+                                            action:(e)=>console.log(`${e.target.value}`),
+                                            type:"date",
+                                            name:"startDate",
+                                            id:"startDate",
+                                            placeHldr:"enter the day  when trainings will start "
+                                        },
+                                        {
+                                            classN:" my-3 ",
+                                            action:(e)=>{
+                                                console.log(`${e.target.value}`);
+                                                let trg  = e.target.value;
+                                                return e.target.value = trg<=0?0:trg
+                                            },
+                                            type:"number",
+                                            name:"supHours",
+                                            id:"supHours",
+                                            placeHldr:""
+                                        },
+                                        {
+                                            classN:" my-3 ",
+                                            action:(e)=>{
+                                                console.log(`${e.target.value}`);
+                                                let trg  = e.target.value;
+                                                return e.target.value = trg<=0?0:trg
+                                            },
+                                            type:"number",
+                                            name:"realHours",
+                                            id:"realHours",
+                                            placeHldr:""
+                                        },
+                                        {
+                                            classN:" my-3 ",
+                                            action:(e)=>console.log(`${e.target.value}`),
+                                            type:"select",
+                                            options:[" not started "," in progress "," finished ", " stopped "],
+                                            name:"status",
+                                            id:"status",
+                                            placeHldr:""
+                                        }
+                                    ]}/>
+                            </Col>
+                        </Row>
                 }
 
             </Container>
