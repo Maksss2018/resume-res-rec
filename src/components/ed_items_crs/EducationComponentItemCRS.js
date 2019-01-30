@@ -2,18 +2,22 @@ import React, {Component} from "react";
 import {connect} from 'react-redux';
 import {deleteTrainingPlace,updateTrainingPlace} from '../../actions/'
 import {/*Col, Container, Row,*/ Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button} from "reactstrap";
+    CardTitle, CardSubtitle, Button, Input
+} from "reactstrap";
 import "../../App.css";
 
 class EducationComponentItemCRS extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data:null
+            data:null,
+            flagUpdate:false,
+            updatesToSend:{}
         };
 
         this.handelonCOnllectionUpdate = this.handelonCOnllectionUpdate.bind(this);
         this.onCollectionUpdate = this.onCollectionUpdate.bind(this);
+        this.HandelOnChanges = this.HandelOnChanges.bind(this);
         this.makeDateObject = this.makeDateObject.bind(null);
     }
 
@@ -39,10 +43,19 @@ class EducationComponentItemCRS extends Component {
     };
     componentDidUpdate(prevProps,prevState){
     };
+    HandelOnChanges = (e)=>{
+            e.preventDefault();
+            let trg = e.target,
+                value = trg.value,
+                name = trg.name;
+            this.setState({updatesToSend:{[name]:value}})
+    };
     render() {
-        let {data,editable} = this.props,
+        let  {flagUpdate} = this.state,
+            {data,editable} = this.props,
             [yearStr,monthStr,dayStr] =   data.time["start_date"].split("-"),
-            [yearFnsh,monthFnsh,dayFnsh] =  data.time["finish_date"].split("-");  /*
+            [yearFnsh,monthFnsh,dayFnsh] =  data.time["finish_date"].split("-");
+        /*
         let listMain = crsList!==null?crsList.map((crs,ind)=>{
             return(ind);
         }):"loading...";*/
@@ -57,20 +70,66 @@ class EducationComponentItemCRS extends Component {
                 <Card>
                     <CardImg top width="100%" alt={`${data.name} - Malyi M.G. `} src={`../../images/${data.img[0].url}`} />
                     <CardBody className={`bg-${data.status!==0 ?"success":"warning"} text-white`}>
-                        <CardTitle>{data.company}</CardTitle>
-                        <CardSubtitle>{data.nameCrs}</CardSubtitle>
-                        <CardText>
-                            {this.makeDateObject(Number(yearStr), Number(dayStr), Number(monthStr))}
-                            <br/>
-                            {this.makeDateObject(Number(yearFnsh), Number(dayFnsh), Number(monthFnsh))}
-                            <br/>
 
-                            <Button>
-                                status :
-                            </Button>
+                        {!flagUpdate?<CardTitle>{data.company}</CardTitle>
+                            :<Input
+                            onChange={this.HandelOnChanges}
+                            type="text"
+                            placeholder="company name"
+                            defaultValue={data.company}
+                            name="company">
+                        </Input>}
+                        {!flagUpdate?<CardSubtitle>{data.nameCrs}</CardSubtitle>
+                            :<Input
+                                onChange={this.HandelOnChanges}
+                                type="text"
+                                placeholder="trainings name"
+                                defaultValue={data.nameCrs}
+                                name="nameCrs">
+                            </Input>}
+                        <CardText>
+
+                            {!flagUpdate?`${this.makeDateObject(Number(yearStr), Number(dayStr), Number(monthStr))}`
+                                :<Input
+                                    onChange={this.HandelOnChanges}
+                                    type="date"
+                                    placeholder="start date"
+                                    defaultValue={data.time['start_date']}
+                                    name="start_date">
+
+                                </Input>}
+                            <br/>
+                            {!flagUpdate?`${this.makeDateObject(Number(yearFnsh), Number(dayFnsh), Number(monthFnsh))}`
+                                :<Input
+                                    onChange={this.HandelOnChanges}
+                                    type="date"
+                                    placeholder="finish date"
+                                    defaultValue={data.time['finish_date']}
+                                    name="finish_date">
+
+                                </Input>}
+
+                            <br/>
+                            {!flagUpdate?""
+                                :<Input
+                                    onChange={this.HandelOnChanges}
+                                    type="select"
+                                    placeholder="status"
+                                    defaultValue={Number(data.status)}
+                                    name="status">
+                                    {[" not started "," in progress "," finished ", " stopped "].map((opt,ind)=>{
+                                        return(<option
+                                            key={`Status~${ind}`}
+                                            value={ind}
+                                        >
+                                            {opt}
+                                        </option>);
+                                    })}
+                                </Input>}
+
                         </CardText>
                         <Button className={`m-1`} >
-                            Button { typeof( data.status)}
+                            Button { typeof( data.status)} === {data.status}
                         </Button>
                         {editable?""
                             :<Button className={`btn-warning m-1 animated bounceIn`}>
@@ -90,10 +149,23 @@ class EducationComponentItemCRS extends Component {
                                 :<Button
                                     onClick={(e)=>{
                                         e.preventDefault();
-                                        this.props.updateTrainingPlace(data.dbKeys)
+                                        let  {flagUpdate, updatesToSend} = this.state ,
+                                            { ...other} = data;
+
+                                        if(flagUpdate){
+                                            this
+                                                .props
+                                                .updateTrainingPlace(data.dbKeys,
+                                                    {...updatesToSend,
+                                                        ...other},
+                                                    null)
+                                        }
+
+                                        this.setState({flagUpdate:!flagUpdate})
+
                                     }}
                                     className={`btn-info m-1 animated bounceIn`}>
-                                    Update
+                                    {flagUpdate?"Send updates":"Update"}
                                 </Button>
                             /*TODO:
                             first set  current data  to  the Form fields  =>

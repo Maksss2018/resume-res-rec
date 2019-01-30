@@ -56,33 +56,16 @@ export const deleteTrainingPlace = (key) =>{
     }
 
 };
-export const updateTrainingPlace = (key,newData,img=null) =>{
+export const updateTrainingPlace = (key,newData,images=null) => {
     return (dispatch) => {
-        let  k = key,{
-                company,
-                trainings,
-                link,
-                status,
-                finishDate, startDate, supHours,realHours
-            } = newData ,
-            image = img!==null?img:[{"url":"sketchpad.jpg","name":"real shit"}],
-            rezult = {
-                "company":company,
-                "link":link,
-                "nameCrs":trainings,
-                "status":status,
-                "time":{
-                    "finish_date":finishDate,
-                    "real_hours":realHours,
-                    "start_date":  startDate,
-                    "sup_hours":supHours},
-                "img":[...image],
-            };
+        let  id = key,
+            img = images!==null?images:[{"url":"sketchpad.jpg","name":"real shit"}],
+            rezult = { img,...newData};
         firebase.firestore().collection("education")
-            .doc(k)
+            .doc(id)
             .set({...rezult})
             .then((docRef)=>{
-                console.log("DELETED ", key);
+                console.log("DELETED ", id);
             })
             .catch(function(error) {
                 console.error("Error adding document: ", error);
