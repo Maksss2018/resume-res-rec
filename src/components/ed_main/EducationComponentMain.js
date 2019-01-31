@@ -6,7 +6,20 @@ import EducationComponentItemCRS from "../../components/ed_items_crs/EducationCo
 import EducationForm from "../../components/ed_form/EducationForm.js";
 
 import firebase from "../../database/dbscript.js";
-/*
+/*TODO:
+
+-make methods delete, update, add  for  lessons
+-make methods delete, update, add  for  tasks
+-make methods delete, update, add  for  comments
+-make social links for lessons
+-make social links for   tasks
+-make social links for  comments
+-make marks stm  for lessons
+-make marks stm  for   tasks
+-make marks stm  for  comments
+-think about secureaty system /spam bots protection / db system etc.
+- last that you need to do => find Photoshop Template to make a nice view`s for all this shit
+
 https://console.firebase.google.com/project/maksss2018/database/firestore/data~2Feducation~2FFJVmZtgkFYRFQ24NYRmf
 модуль 1
 JavaScript
