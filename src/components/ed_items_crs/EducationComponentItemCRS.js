@@ -44,11 +44,11 @@ class EducationComponentItemCRS extends Component {
     componentDidUpdate(prevProps,prevState){
     };
     HandelOnChanges = (e)=>{
-            e.preventDefault();
-            let trg = e.target,
-                value = trg.value,
-                name = trg.name;
-            this.setState({updatesToSend:{[name]:value}})
+        e.preventDefault();
+        let trg = e.target,
+            value = trg.value,
+            name = trg.name;
+        this.setState({updatesToSend:{[name]:value}})
     };
     render() {
         let  {flagUpdate} = this.state,
@@ -73,12 +73,12 @@ class EducationComponentItemCRS extends Component {
 
                         {!flagUpdate?<CardTitle>{data.company}</CardTitle>
                             :<Input
-                            onChange={this.HandelOnChanges}
-                            type="text"
-                            placeholder="company name"
-                            defaultValue={data.company}
-                            name="company">
-                        </Input>}
+                                onChange={this.HandelOnChanges}
+                                type="text"
+                                placeholder="company name"
+                                defaultValue={data.company}
+                                name="company">
+                            </Input>}
                         {!flagUpdate?<CardSubtitle>{data.nameCrs}</CardSubtitle>
                             :<Input
                                 onChange={this.HandelOnChanges}
@@ -150,14 +150,18 @@ class EducationComponentItemCRS extends Component {
                                     onClick={(e)=>{
                                         e.preventDefault();
                                         let  {flagUpdate, updatesToSend} = this.state ,
+                                            rezult={},
                                             { ...other} = data;
 
                                         if(flagUpdate){
+                                            for(let keyName in updatesToSend ){
+                                                console.log(" keyName "+keyName);
+                                                rezult = { ...other, [keyName]:updatesToSend[[keyName]]};
+                                            }
                                             this
                                                 .props
                                                 .updateTrainingPlace(data.dbKeys,
-                                                    {...updatesToSend,
-                                                        ...other},
+                                                    {...rezult},
                                                     null)
                                         }
 

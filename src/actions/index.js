@@ -61,14 +61,15 @@ export const updateTrainingPlace = (key,newData,images=null) => {
         let  id = key,
             img = images!==null?images:[{"url":"sketchpad.jpg","name":"real shit"}],
             rezult = { img,...newData};
+        console.log(" ...newData "+JSON.stringify(newData));
         firebase.firestore().collection("education")
             .doc(id)
             .set({...rezult})
             .then((docRef)=>{
-                console.log("DELETED ", id);
+                console.log("Updated ", id);
             })
             .catch(function(error) {
-                console.error("Error adding document: ", error);
+                console.error("Error updating document: ", error);
             });
         dispatch({
             type: 'UPDATE_ITEM_ED_LIST'
