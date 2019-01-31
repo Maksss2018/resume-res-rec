@@ -154,14 +154,10 @@ class EducationComponentItemCRS extends Component {
                                             { ...other} = data;
 
                                         if(flagUpdate){
-                                            for(let keyName in updatesToSend ){
-                                                console.log(" keyName "+keyName);
-                                                rezult = { ...other, [keyName]:updatesToSend[[keyName]]};
-                                            }
                                             this
                                                 .props
                                                 .updateTrainingPlace(data.dbKeys,
-                                                    {...rezult},
+                                                    { ...other, ...updatesToSend},
                                                     null)
                                         }
 
