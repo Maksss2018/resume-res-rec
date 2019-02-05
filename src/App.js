@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import configureStore from './store/configure-store';
 import CvComponentMain from './components/cv_main/CvComponentMain';
 import EducationComponentMain from './components/ed_main/EducationComponentMain';
+import EducationComponentLessons from './components/ed_lessons_container/EducationComponentLessons';
 
 class App extends Component {
    render() {
@@ -18,7 +19,8 @@ class App extends Component {
                 <div>
                     <Switch>
                         <Route exact path="/" component={CvComponentMain} />
-                        <Route  path="/education/:action"  component={EducationComponentMain} />
+                        <Route exact path="/education/:action"  component={EducationComponentMain} />
+                        <Route  path="/education/lessons/:name/:action"  component={EducationComponentLessons} />
                     </Switch>
                 </div>
                  </Router>

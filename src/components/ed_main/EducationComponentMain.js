@@ -116,6 +116,7 @@ class EducationComponentMain extends Component {
     componentDidMount() {
         this.unsubscribe =  this.ref.onSnapshot(this.onCollectionUpdate);
     }
+
     componentDidUpdate(prevProps,prevState){
         // let  {UserInfo} = this.props;
     }
