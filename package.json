@@ -1,7 +1,7 @@
 {
-  "name": "courses",
-  "version": "1.0.0",
-  "description": "Beetroot Academy course JavaScript advanced",
+  "name": "malyi_cv",
+  "version": "0.1.0",
+  "description": "Malyi M.G. CV. Based on results of lesson`s in  Beetroot Academy course JavaScript advanced ( Roman Nikiforov )",
   "main": "index.js",
   "scripts": {
     "start": "run-p start:dev start:api",
@@ -19,8 +19,9 @@
     "server:build": "http-server ./build"
   },
   "keywords": [],
-  "author": "Beetroot Academy",
-  "license": "ISC",
+  "author": "malyimaksym37@gmail.com",
+  "private": true,
+  "license": "donationware",
   "dependencies": {
     "bootstrap": "^4.3.1",
     "immer": "^2.1.5",
