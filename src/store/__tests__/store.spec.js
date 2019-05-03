@@ -1,7 +1,7 @@
 import {createStore} from "redux"
 import rootReducer from "../../reducers"
 import {courses} from "../../../tools/mockData"
-import * as coursesActions from "../../ac/coursesActions"
+import * as coursesActions from "../../actions/coursesActions"
 
 test("should create sotore ", () => {
   const course = courses[0]

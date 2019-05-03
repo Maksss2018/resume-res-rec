@@ -26,6 +26,7 @@ import App from "./components/App"
 const store = configureStore()
 window.store = store
 
+
 render(
   <Provider store={store}>
     <Router>

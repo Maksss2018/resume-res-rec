@@ -1,5 +1,5 @@
 import coursesReducer from "../coursesReducer"
-import * as coursesActions from "../../ac/coursesActions"
+import * as coursesActions from "../../actions/coursesActions"
 import C from "../../constants"
 
 describe("reducer", () => {

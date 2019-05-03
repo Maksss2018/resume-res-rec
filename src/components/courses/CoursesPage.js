@@ -1,8 +1,8 @@
 import React, {useState, useEffect, useMemo} from "react"
 import {connect} from "react-redux"
 import {Redirect} from "react-router-dom"
-import {loadCoursesAction} from "../../ac/coursesActions"
-import {loadAuthorsAction} from "../../ac/authorsActions"
+import {loadCoursesAction} from "../../actions/coursesActions"
+import {loadAuthorsAction} from "../../actions/authorsActions"
 import CoursesList from "./CoursesList"
 import Spinner from "../common/Spinner"
 
