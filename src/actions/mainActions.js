@@ -1,16 +1,16 @@
 import C from "../constants"
-import * as courseApi from "../api/courseApi"
+import * as mainApi from "../api/mainApi"
 import {beginApiCall, errorApiCall} from "./apiStatusActions"
 
-export const loadMainAction = () => {
+export const loadMain = () => {
   return function(dispatch) {
     dispatch(beginApiCall())
-    return courseApi
-      .getMAIN()
-      .then(MAIN => {
+    return mainApi
+      .getMain()
+      .then(main => {
         dispatch({
           type: C.LOAD_MAIN_SUCCESS,
-          payload: MAIN,
+          payload: main,
         })
       })
       .catch(err => {
@@ -20,24 +20,24 @@ export const loadMainAction = () => {
   }
 }
 
-export const createSuccessCourse = course => ({
-  type: C.CREATE_COURSE_SUCCESS,
-  payload: course,
+export const createSuccessMain = main => ({
+  type: C.CREATE_MAIN_SUCCESS,
+  payload: main,
 })
 
-export const updateSuccessCourse = course => ({
-  type: C.UPDATE_COURSE_SUCCESS,
-  payload: course,
+export const updateSuccessMain = main => ({
+  type: C.UPDATE_MAIN_SUCCESS,
+  payload: main,
 })
 
-export const saveMAINAction = course => dispatch => {
+export const saveMainAction = main => dispatch => {
   dispatch(beginApiCall())
-  return courseApi
-    .saveCourse(course)
-    .then(savedCourse => {
-      course.id
-        ? dispatch(updateSuccessCourse(savedCourse))
-        : dispatch(createSuccessCourse(savedCourse))
+  return mainApi
+    .saveMain(main)
+    .then(savedMain => {
+      main.id
+        ? dispatch(updateSuccessMain(savedMain))
+        : dispatch(createSuccessMain(savedMain))
     })
     .catch(err => {
       dispatch(errorApiCall())

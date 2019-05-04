@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import TextInput from "../common/TextInput"
 import SelectInput from "../common/SelectInput"
-import "./CourseForm.css"
+import "./CourseForm.scss"
 
 const CourseForm = ({course, authors, onSave, onChange, saving, errors}) => {
   return (

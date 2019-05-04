@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from "react"
 import {connect} from "react-redux"
-import {loadCoursesAction, saveCoursesAction} from "../../actions/coursesActions"
+import {
+  loadCoursesAction,
+  saveCoursesAction,
+} from "../../actions/coursesActions"
 import {loadAuthorsAction} from "../../actions/authorsActions"
 import CourseForm from "./CourseForm"
 import {newCourse} from "../../../tools/mockData"
