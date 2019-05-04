@@ -6,9 +6,9 @@ import {loadMain} from "../../actions/mainActions"
 //import Spinner from "../common/Spinner"
 import PropTypes from "prop-types"
 
-function LeftBar({main}) {
+function LeftBar({main,loadMain}) {
   useEffect(() => {
-    if (main === null) {
+    if (!main.title ) {
       loadMain().catch(err => {
         console.error(err);
       })
@@ -25,7 +25,7 @@ LeftBar.propTypes = {
 function mapStateToProps(state) {
   const {main} = state
   return {
-    main: main || null,
+    main: main || {},
   }
 }
 

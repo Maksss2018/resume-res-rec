@@ -5,8 +5,9 @@ import HomePage from "./home/HomePage"
 import LeftBar from "./leftBar/LeftBar"
 import AboutPage from "./about/AboutPage"
 import Page404 from "./common/Page404"
-import Nav from "./common/Nav"
+import NavMenu from "./common/NavMenu"
 
+import  "./../styles/index.scss"
 import {Container, Row, Col} from "reactstrap"
 
 import ManageCoursesPage from "./courses/ManageCoursesPage"
@@ -15,7 +16,6 @@ const App = props => (
   <Container fluid={true}>
     <Row>
       <Route
-        exact
         path="/"
         render={props => (
           <Col md={4} className={" h-100 "}>
@@ -25,7 +25,7 @@ const App = props => (
       />
 
       <Col md={8}>
-        <Nav />
+        <NavMenu />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/experience" component={CoursesPage} />
@@ -36,7 +36,7 @@ const App = props => (
         </Switch>
       </Col>
       <Col xs={12}>
-        <footer>
+        <footer className={" d-flex align-items-med justify-content-center footer "}>
           <h5>Footer</h5>
         </footer>
       </Col>

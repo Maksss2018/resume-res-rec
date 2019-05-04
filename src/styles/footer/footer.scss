@@ -1,0 +1,17 @@
+@import './../var';
+@import './../fonts/index';
+.footer{
+  padding: 1rem;
+  position: fixed;
+  bottom: 0px;
+ .window{
+   &-top{
+     /* make animation   to show from outside the screen to inside  */
+    color: $test-color-up;
+   }
+   &-bottom{
+     /* make animation   to hide from inside the screen to outside  */
+     color: $test-color-down;
+   }
+   }
+}

@@ -10,7 +10,7 @@ export const loadMain = () => {
       .then(main => {
         dispatch({
           type: C.LOAD_MAIN_SUCCESS,
-          payload: main,
+          payload: main
         })
       })
       .catch(err => {
