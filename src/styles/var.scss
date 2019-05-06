@@ -1,4 +1,43 @@
+$primary-color:(
+        bright:#E67C17,
+        dark:#9A6A3D,
+ 		darker:#7B3E04,
+        light:#F6AA62,
+ 		lighter:#F6C89C
+);
+$complementary-color:(
+        bright:#117A8D,
+        dark:#27565F,
+        darker:#03414C,
+        light:#59C4D8,
+        lighter:#8BCCD8
+);
 
+$secondary-color:(
+        a:(
+                bright:#E6CA17,
+                dark:#9A8D3D,
+                darker:#7B6B04,
+                light:#F6E262,
+                lighter:#F6EA9C
+        ),
+        b:(
+                bright:#481E9D,
+                dark:#433069,
+                darker:#1F0554,
+                light:#8D65DE,
+                lighter:#AD95DE
+        )
+);
+
+@function get-color($name,$sub-name,$sub-sub-name) {
+  $farr : map-get($name,$sub-name);
+  @if $sub-sub-name != false {
+    @return map-get($farr,$sub-sub-name);
+  }
+  @return $farr;
+}
+/* map-get($var,element_name) */
 
 $test-color-up:#0f6674;
 $test-color-down: #1e7427;

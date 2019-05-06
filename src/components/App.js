@@ -36,7 +36,7 @@ const App = props => (
         </Switch>
       </Col>
       <Col xs={12}>
-        <footer className={" d-flex align-items-med justify-content-center footer "}>
+        <footer className={" window-top d-flex align-items-med justify-content-center footer "}>
           <h5>Footer</h5>
         </footer>
       </Col>

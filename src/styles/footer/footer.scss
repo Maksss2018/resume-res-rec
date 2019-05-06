@@ -1,17 +1,23 @@
 @import './../var';
 @import './../fonts/index';
+$footer-fonts-color:get-color( $secondary-color, a, lighter);
 .footer{
   padding: 1rem;
   position: fixed;
   bottom: 0px;
- .window{
+  background-color: get-color( $secondary-color, b, light);
+ & .window{
    &-top{
      /* make animation   to show from outside the screen to inside  */
-    color: $test-color-up;
-   }
+     color:  get-color( $secondary-color, a, darker);//get-color($secondary-color, darken);
+    }
    &-bottom{
      /* make animation   to hide from inside the screen to outside  */
      color: $test-color-down;
+     }
    }
-   }
+  .&-container{
+    background-color: get-color( $secondary-color, b, lighter);
+    color:  get-color( $secondary-color, b, dark);
+  }
 }

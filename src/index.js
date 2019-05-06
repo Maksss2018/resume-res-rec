@@ -8,7 +8,12 @@ import App from "./components/App"
 
 /*TODO:
  *  [*] - DB architecture ("./tools/db.json")
- *  [] - Дизайн
+ *  [] - Дизайн:
+ *    -- color schema (done)
+ *     ---make some sass  func and mixin`s (done)
+ *    -- fonts
+ *    -- pre HTML skeleton ..(partly finished)
+ *    -- animation (only an idea)
  *  [] - вёрстка :
  *  [] router :
  *  [] 404 page,
